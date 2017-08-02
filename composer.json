@@ -1,0 +1,15 @@
+{
+    "name": "licor/correios-ws",
+    "description": "PHP Library to Correios Webservice",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    },
+    "authors": [
+        {
+            "name": "Inacio Correa",
+            "email": "luiz.inacio.correa@gmail.com"
+        }
+    ],
+    "require": {}
+}
