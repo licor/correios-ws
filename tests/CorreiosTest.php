@@ -1,18 +1,24 @@
 <?php
 
-require dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."vendor".DIRECTORY_SEPARATOR."autoload.php";
-require dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR."src".DIRECTORY_SEPARATOR."Correios.php";
-
 use licor\Correios;
 use PHPUnit\Framework\TestCase;
 
 class CorreiosTest extends TestCase 
 {
-	public function testOk() 
-	{
-		$correios = new Correios;
-		$result = $correios->consultaCEP('21920420');
+	protected $correios;
 
-		$this->assertClassHasAttribute('error', $result);	
+    public function setUp()
+    {
+        $this->correios = new Correios;
+    }
+
+	public function testBuscaCEP() 
+	{
+		$result = (array)$this->correios->consultaCEP('21920420');
+		$this->assertArrayHasKey('cep', $result);
+
+		$result = (array)$this->correios->consultaCEP('20780201');		
+		$this->assertArrayHasKey('error', $result);
 	}
+
 }

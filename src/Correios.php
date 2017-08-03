@@ -37,8 +37,8 @@ class Correios {
     function consultaCEP($cep) {
 		try {
 			$ret = $this->soapClient->consultaCEP(array('cep' => $cep))->return;
-		} catch (Exception $e) {
-			$ret = new stdclass;
+		} catch (\SoapFault $e) {
+			$ret = new \stdclass;
 			$ret->error = $e->getMessage();
 		}
 
